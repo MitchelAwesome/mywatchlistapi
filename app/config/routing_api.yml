@@ -1,0 +1,17 @@
+
+tvshows:
+    type: rest
+    prefix: /
+    resource: AppBundle\Controller\TvshowController
+
+users:
+    type: rest
+    prefix: /
+    resource: AppBundle\Controller\UserController
+
+search:
+    type: rest
+    prefix: /
+    resource: AppBundle\Controller\TmdbController
+
+

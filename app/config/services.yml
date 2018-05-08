@@ -1,0 +1,33 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    #service_name:
+    #    class: AppBundle\Directory\ClassName
+    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+    tvshow_service:
+        class: AppBundle\Service\TvshowService
+        arguments: ["@doctrine.orm.entity_manager","@form.factory", "@auth_service", "@paginator_service"]
+
+    auth_service:
+        class: AppBundle\Service\AuthService
+
+    paginator_service:
+        class: AppBundle\Service\PaginatorService
+
+    tmdb_service:
+        class: AppBundle\Service\TmdbService
+        arguments: ['@service_container']
+
+
+    acme_api.event.jwt_created_listener:
+        class: AppBundle\EventListener\JWTCreatedListener
+        arguments: [ '@request_stack' ]
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+
+
+
