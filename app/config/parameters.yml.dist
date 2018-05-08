@@ -15,4 +15,4 @@ parameters:
     jwt_key_pass_phrase: qwerty
     jwt_token_ttl: 2592000
     tmdb_api_key: abcd1234
-    tmdb_base_path: https://api.themoviedb.org/3
+    tmdb_base_path: https://api.themoviedb.org
