@@ -56,6 +56,15 @@ class Tvshow
     /**
      * @var string
      *
+     * @ORM\Column(name="img", type="text", nullable=true)
+     * @Serializer\Groups({"default","ROLE_ADMIN"})
+     * @Serializer\Expose()
+     */
+    private $img;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="watch_status", type="string", length=255)
      * @Serializer\Groups({"default","ROLE_ADMIN"})
      * @Serializer\Expose()
@@ -143,6 +152,23 @@ class Tvshow
     public function getTitle()
     {
         return $this->title;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * @param string $img
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
     }
 
     /**

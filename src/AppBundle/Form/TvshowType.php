@@ -19,6 +19,7 @@ class TvshowType extends AbstractType
             ->add('userId')
             ->add('tvshowId')
             ->add('title')
+            ->add('img')
             ->add('watchStatus',ChoiceType::class, [
                 'required' => true,
                 'choices' => WatchStatusTypeEnum::getAvailableTypes()

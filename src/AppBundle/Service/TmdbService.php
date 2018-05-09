@@ -41,8 +41,22 @@ class TmdbService
                     'sort_by' => 'popularity.desc',
                     'vote_average.gte' => 8,
                     'page' => rand(1,150),
+                    'total_results' => 1,
                     'include_null_first_air_dates' => 'false'
                 ]
+            )
+        ]);
+
+        return $resp->getBody()->getContents();
+    }
+
+    public function getShowByid($id)
+    {
+        $client = $this->guzzle;
+        $resp = $client->get('/3/tv/'.$id, [
+            'query' => array_merge(
+                $client->getConfig()['query'],
+                ['language' => 'en-US']
             )
         ]);
 

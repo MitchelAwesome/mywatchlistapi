@@ -12,18 +12,19 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @package AppBundle\Controller
  * @View(serializerGroups={"default"})
- * @RouteResource("search")
+ * @RouteResource("search", pluralize=false)
  */
 class TmdbController extends FOSRestController
 {
-    public function getAction(Request $request)
+    public function cgetAction(Request $request)
     {
         $query = $request->query->get('query');
+        $guzzle = $this->get('tmdb_service');
 
         if ($query || !empty($query)) {
-            $resp = $this->get('tmdb_service')->search($query);
+            $resp = $guzzle->search($query);
         } else {
-            $resp = $this->get('tmdb_service')->random();
+            $resp = $guzzle->random();
         }
 
         $response = new \Symfony\Component\HttpFoundation\Response($resp);
@@ -32,5 +33,13 @@ class TmdbController extends FOSRestController
         return $response;
     }
 
+    public function getAction($id = null) {
+        $guzzle = $this->get('tmdb_service');
+        $resp = $guzzle->getShowByid($id);
+        $response = new \Symfony\Component\HttpFoundation\Response($resp);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
 
 }
