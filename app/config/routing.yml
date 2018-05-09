@@ -8,4 +8,5 @@ api:
 
 api_login:
     path: /login
+    methods: ['POST', 'OPTIONS']
 
