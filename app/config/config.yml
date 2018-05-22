@@ -80,7 +80,7 @@ nelmio_cors:
         max_age: 0
         hosts: []
         origin_regex: false
-        forced_allow_origin_value: *
+        forced_allow_origin_value: '*'
     paths:
         '^/':
             allow_origin: ['*']
