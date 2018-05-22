@@ -15,3 +15,8 @@
 /vendor/
 /web/bundles/
 /.idea
+/.htpasswd/
+/logs/
+/public_html/cgi-bin/
+/public_html/phpinfo.php
+/stats/
